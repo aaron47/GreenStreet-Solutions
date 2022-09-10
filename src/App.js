@@ -1,45 +1,91 @@
 import React, { useCallback } from 'react';
-import Particles from "react-particles";
-import { loadFull } from "tsparticles";
-import logo from './logo.svg';
-import './App.css';
-import particlesOptions from "./particles.json";
+import Particles from 'react-particles';
+import { loadFull } from 'tsparticles';
+import particlesOptions from './particles.json';
+import { ImDownload3 } from 'react-icons/im';
+import { FaMoneyCheckAlt } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
-    const particlesInit = useCallback(main => {
-        loadFull(main);
-    }, [])
+  const particlesInit = useCallback((main) => {
+    loadFull(main);
+  }, []);
 
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setInterval(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
+
+  if (loader) {
     return (
-        <div className="App">
-            <Particles options={particlesOptions} init={particlesInit}/>
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <p>
-                    Edit <code>src/particles.json</code> to customize Particles, then save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-                <a
-                    className="App-link"
-                    href="https://particles.js.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    See Particles samples
-                </a>
-            </header>
-        </div>
+      <div id="background" className="z-[900]">
+        <LoadingSpinner className="bg-slate-800 w-full h-full" />
+      </div>
     );
+  } else {
+    return (
+      <div>
+        <div>
+          <Particles options={particlesOptions} init={particlesInit} />
+          <video
+            className="sm:-z-10 w-full fixed h-full"
+            id="video"
+            autoPlay
+            muted
+            loop
+          >
+            <source src="./assets/videoplayback.mp4" type="video/mp4" />
+          </video>
+
+          <header
+            className="flex flex-col justify-center text-center items-center h-screen align-center"
+            id="header"
+          >
+            <h1 className="sm:text-[2.35em]  md:text-[4.35em] text-white font-bold uppercase leading-4 mb-5 ">
+              GreenStreet.Solutions
+            </h1>
+            <h2 className="sm:text-[1.35em] md:text-[2.35em] text-white uppercase tracking-wider font-light mb-5 mt-3">
+              #1 League of Legends and Valorant Coach, Booster and Scripter
+            </h2>
+            <h3 className="sm:text-[1em] md:text-[1.35em] tracking-wide uppercase font-medium text-white mb-5">
+              Download GreenStreet.exe Now!
+            </h3>
+            <nav>
+              <ul className="flex">
+                <li>
+                  <a
+                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    class="w-full"
+                    target="_blank"
+                    className="circle mr-5 mb-3 hover:scale-125 ease-in duration-300"
+                  >
+                    <ImDownload3 color="#e81351" size={35} />
+                  </a>
+                  <span className="text-white mr-3">Download</span>
+                </li>
+
+                <li>
+                  <a
+                    className="circle mb-3"
+                    href="based.html"
+                    class="circle mb-3 hover:scale-125 ease-in duration-300"
+                    target="_blank"
+                  >
+                    <FaMoneyCheckAlt color="#e81351" size={35} />
+                  </a>
+                  <span className="text-white mr-[1.5]">Buy Now!</span>
+                </li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
