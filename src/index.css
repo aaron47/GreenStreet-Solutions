@@ -135,3 +135,25 @@ body {
     @apply font-bold text-white rounded-full border border-white flex items-center justify-center font-mono w-[80px] h-[80px] text-[1em];
   }
 }
+
+/*jhin purple foreground*/
+.purple-foreground {
+  background: linear-gradient(
+      0deg,
+      rgba(89, 0, 255, 0.4),
+      rgba(81, 0, 255, 0.4)
+    ),
+    url(./assets/jhincard.jpg);
+  background-size: cover;
+}
+
+/*jhin olive foreground*/
+.olive-foreground {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 217, 0, 0.4),
+      rgba(255, 251, 0, 0.4)
+    ),
+    url(./assets/jhincard2.jpg);
+  background-size: cover;
+}
