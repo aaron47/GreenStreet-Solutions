@@ -4,11 +4,11 @@ import jhin from '../assets/jhin.png';
 const Features = () => {
   return (
     <div className="p-16 bg-[#161616] flex flex-col text-left border-[50px] border-[#4E5F6F] space-y-2 lg:grid grid-cols-2">
-      <div className="lg:absolute right-10  bottom-[-33.2rem]">
+      <div className="lg:absolute right-[-80px] bottom-[-33.2rem]">
         <img
           src={jhin}
           alt="jhin image"
-          className="hidden lg:block h-[500px]"
+          className="hidden lg:block h-[530px]"
         />
       </div>
       <div className="lg:space-y-5 ">
