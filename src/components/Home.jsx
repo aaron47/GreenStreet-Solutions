@@ -10,6 +10,8 @@ import Features from './Features';
 import { Link } from 'react-router-dom';
 import PurchaseSection from './PurchaseSection';
 import videoplayback from '../assets/videoplayback.mp4';
+import music from '../assets/music.mp3';
+import ReactHowler from 'react-howler';
 
 const Home = () => {
   const particlesInit = useCallback((main) => {
@@ -45,6 +47,16 @@ const Home = () => {
             <source src={videoplayback} type="video/mp4" />
           </video>
 
+          <ReactHowler
+            src={music}
+            playing={true}
+            volume={0.2}
+            mute={false}
+            loop={true}
+            preload={true}
+            html5={true}
+          />
+
           <header
             className="flex flex-col justify-center text-center items-center h-screen align-center"
             id="header"
@@ -69,19 +81,6 @@ const Home = () => {
                   >
                     <ImDownload3 color="#e81351" size={35} />
                   </a>
-                  <span className="text-white mr-3">Download</span>
-                </li>
-
-                <li>
-                  <Link
-                    className="circle mb-3"
-                    to="/features"
-                    class="circle mb-3 hover:scale-125 ease-in duration-300"
-                    target="_blank"
-                  >
-                    <FaMoneyCheckAlt color="#e81351" size={35} />
-                  </Link>
-                  <span className="text-white mr-[1.5]">Buy Now!</span>
                 </li>
               </ul>
             </nav>
